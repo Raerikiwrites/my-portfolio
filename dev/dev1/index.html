@@ -1,0 +1,1262 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Raerikiwrites.github.io/my-portfolio/dev/dev1/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../Samples/aptos/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>From Scratch #1 – First Steps into Web3 & Solidity - RaeScripted</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#from-scratch-1-first-steps-into-web3-solidity" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RaeScripted" class="md-header__button md-logo" aria-label="RaeScripted" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RaeScripted
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              From Scratch #1 – First Steps into Web3 &amp; Solidity
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RaeScripted" class="md-nav__button md-logo" aria-label="RaeScripted" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RaeScripted
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Me
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    From Scratch; Dev series
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            From Scratch; Dev series
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    From Scratch; Developer Series
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    From Scratch #1 – First Steps into Web3 &amp; Solidity
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    From Scratch #1 – First Steps into Web3 &amp; Solidity
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#starting-out-with-learnweb3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting Out with LearnWeb3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting Out with LearnWeb3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Programming?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Blockchain?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-web3" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Web3?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-ethereum" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Ethereum?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-crypto-wallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up a Crypto Wallet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-solidity-my-first-dapp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Solidity &amp; My First dApp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cryptozombies" class="md-nav__link">
+    <span class="md-ellipsis">
+      CryptoZombies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CryptoZombies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Declaration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contract Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      State Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Struct
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-of-pets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array of Pets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-create-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Create Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-dna-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random DNA Generator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-function-to-create-pets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Function to Create Pets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing-thoughts-on-day-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closing Thoughts on Day 1
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Writing Samples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Writing Samples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Aptos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Aptos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Samples/aptos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aptos Writing Samples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Samples/aptos/sample1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What Is Web3? Understanding the Next Generation of the Internet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Samples/aptos/sample2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What is Aptos? A Beginner-Friendly Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Samples/ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Artificial Intelligence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Samples/solana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solana
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portfolio-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#starting-out-with-learnweb3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting Out with LearnWeb3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting Out with LearnWeb3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Programming?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Blockchain?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-web3" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Web3?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-ethereum" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Ethereum?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-crypto-wallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up a Crypto Wallet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-solidity-my-first-dapp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Solidity &amp; My First dApp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cryptozombies" class="md-nav__link">
+    <span class="md-ellipsis">
+      CryptoZombies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CryptoZombies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Declaration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contract Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      State Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Struct
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-of-pets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array of Pets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-create-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Create Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-dna-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Random DNA Generator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-function-to-create-pets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Function to Create Pets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing-thoughts-on-day-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closing Thoughts on Day 1
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="from-scratch-1-first-steps-into-web3-solidity">From Scratch #1 – First Steps into Web3 &amp; Solidity</h1>
+<p><em><strong>Date:</strong> September 2, 2025</em>  </p>
+<p>Today officially marks the start of my <em>From Scratch</em> journey into blockchain development. My goal is to learn daily, document everything I understand (and don’t understand), and keep track of my growth in both technical knowledge and personal reflections.  </p>
+<p>For Day 1, I decided to dive in with two popular beginner-friendly resources:<br />
+- <strong>LearnWeb3</strong>: a structured curriculum that introduces blockchain and Web3 concepts step by step.<br />
+- <strong>CryptoZombies</strong>: an interactive game-like tutorial that teaches Solidity through building a zombie-themed dApp.  </p>
+<p>I also set up a brand-new crypto wallet, experimented with faucets (more on that later), and even tried deploying my first smart contract.  </p>
+<hr />
+<h2 id="starting-out-with-learnweb3">Starting Out with LearnWeb3</h2>
+<p>I kicked things off today with LearnWeb3, which is designed to guide beginners into blockchain development step by step. At first, it felt like a friendly introduction, covering the basics of programming, what a blockchain is, and what Web3 really means.  </p>
+<p>The pace was steady, but as I got deeper—especially when it came to Solidity and building my first dApp—things started to feel a little overwhelming. Still, I tried to take notes carefully, almost like I was building my own schoolbook on Web3.  </p>
+<hr />
+<h3 id="what-is-programming">What is Programming?</h3>
+<p>Programming is basically telling a computer what to do using a language it understands. Just like humans use English, Yoruba, or French to communicate, computers have their own “languages” like Python, JavaScript, or Solidity.  </p>
+<hr />
+<h3 id="what-is-a-blockchain">What is a Blockchain?</h3>
+<p>A <strong>blockchain</strong> is a distributed and decentralized ledger that records transactions in a series of blocks linked together using cryptographic hashes.  </p>
+<p>In simpler terms, a blockchain is a digital ledger (like a notebook) that’s shared across many computers. Instead of one person keeping the records, everyone holds a copy, so it’s almost impossible to secretly alter it.  </p>
+<hr />
+<h3 id="what-is-web3">What is Web3?</h3>
+<p><strong>Web3</strong> is the version of the internet where applications run on blockchains and are community-owned rather than controlled by a single centralized entity.  </p>
+<p>Put simply, it’s like moving from a classroom where one teacher controls the lesson (<em>Web2</em>) to a group project where everyone participates and has a say. This structure allows for shared ownership, transparency, and collaboration.  </p>
+<hr />
+<h3 id="what-is-ethereum">What is Ethereum?</h3>
+<p><strong>Ethereum</strong> is a decentralized, open-source blockchain platform that supports smart contracts and enables the creation of decentralized applications (dApps).  </p>
+<p>In simpler terms, Ethereum is like a global computer that anyone can use. Instead of relying on a single company’s servers, people all over the world contribute their computers to run programs and applications, making it more open, secure, and resistant to control by one authority.  </p>
+<hr />
+<h2 id="setting-up-a-crypto-wallet">Setting Up a Crypto Wallet</h2>
+<p>To interact with Ethereum and Web3 applications, the first step was setting up a crypto wallet.  </p>
+<p>I used <strong>MetaMask</strong>, one of the most popular non-custodial wallets. MetaMask works as a browser extension and mobile app, allowing you to securely store your private keys and manage ETH and tokens. After setup, the wallet can connect directly to decentralized applications (dApps) with just a few clicks, making it a gateway to the Ethereum ecosystem.  </p>
+<p>👉 <a href="https://support.metamask.io/start/getting-started-with-metamask/">Official MetaMask setup guide</a>  </p>
+<hr />
+<h2 id="introduction-to-solidity-my-first-dapp">Introduction to Solidity &amp; My First dApp</h2>
+<p><strong>Solidity</strong> is the programming language used to build smart contracts on Ethereum, the foundation of decentralized applications (dApps). Unlike traditional applications, dApps run on the blockchain, meaning once deployed, they are immutable. This makes testing and careful deployment especially important.  </p>
+<p>While building my first dApp, I experienced both excitement and challenges:  </p>
+<ul>
+<li>🎉 My joy was unmatched when I finally discovered a faucet that allowed me to use a completely new wallet to receive testnet tokens (shoutout to Google Cloud Web3).  </li>
+<li>😅 Deployment proved to be a headache, but it finally worked—it turned out to be a network issue.  </li>
+</ul>
+<p>For now, I’ve decided to pause my LearnWeb3 lessons until I gain a stronger grasp of Solidity itself. Taking things step by step feels like the right approach to build a solid foundation.  </p>
+<hr />
+<h2 id="cryptozombies">CryptoZombies</h2>
+<p>After wrestling with LearnWeb3 and realizing I need a deeper grip on Solidity, I decided to switch things up and dive into <strong>CryptoZombies</strong>.  </p>
+<p>The introduction immediately felt different: less formal, more playful. Instead of throwing me into dense documentation, it frames Solidity through building a zombie game.  </p>
+<p>To make things more convenient and relatable, I adjusted the original CryptoZombies example. Instead of a <em>Zombie Factory</em>, I built a simple <strong>Pet Factory</strong> contract that creates pets with unique DNA. The structure and concepts are the same, but the new theme makes it easier to understand without the “zombie” flavor.  </p>
+<p>Now let’s break it down step by step…  </p>
+<hr />
+<h3 id="version-declaration">Version Declaration</h3>
+<div class="codehilite"><pre><span></span><code>pragma solidity &gt;=0.5.0 &lt;0.6.0;
+</code></pre></div>
+
+<ul>
+<li>This line tells the compiler which version of Solidity can compile this code.  </li>
+<li>It means: “This contract works with Solidity versions starting from 0.5.0 up to (but not including) 0.6.0.”</li>
+</ul>
+<hr />
+<h3 id="contract-definition">Contract Definition</h3>
+<div class="codehilite"><pre><span></span><code>contract PetFactory {
+
+}
+</code></pre></div>
+
+<ul>
+<li>
+<p>A contract in Solidity is like a class in other languages.It contains state variables, functions, and events.</p>
+</li>
+<li>
+<p>Here, we name the contract PetFactory.</p>
+</li>
+</ul>
+<hr />
+<h3 id="event">Event</h3>
+<div class="codehilite"><pre><span></span><code>event NewPet(uint petId, string name, uint dna);
+</code></pre></div>
+
+<ul>
+<li>
+<p>Events are like logs that get recorded on the blockchain.They let external apps (like web apps) know when something happens.</p>
+</li>
+<li>
+<p>We create a new pet, we fire an event with its ID, name, and DNA</p>
+</li>
+</ul>
+<hr />
+<h3 id="state-variables">State Variables</h3>
+<div class="codehilite"><pre><span></span><code>uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>dnaDigits</code>: We decide the length of the pet’s DNA → 16 digits.</p>
+</li>
+<li>
+<p><code>dnaModulus</code>: Makes sure our DNA doesn’t exceed 16 digits.
+(e.g., if a number is too big, % dnaModulus keeps it within range).</p>
+</li>
+</ul>
+<hr />
+<h3 id="struct">Struct</h3>
+<div class="codehilite"><pre><span></span><code>uint dnaDigits = 16;
+struct Pet {
+    string name;
+    uint dna;
+}
+</code></pre></div>
+
+<ul>
+<li>Structs let us create custom data types.</li>
+<li>Here a Pet has:<ul>
+<li>a name (string)</li>
+<li>a dna (unique number that represents its traits).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="array-of-pets">Array of Pets</h3>
+<div class="codehilite"><pre><span></span><code>Pet[] public pets;
+</code></pre></div>
+
+<ul>
+<li>
+<p>This creates a dynamic array to store all pets</p>
+</li>
+<li>
+<p>It’s marked public, so Solidity automatically gives us a getter function (i.e Anyone can check what pets exist.)</p>
+</li>
+</ul>
+<hr />
+<h3 id="internal-create-function">Internal Create Function</h3>
+<div class="codehilite"><pre><span></span><code>function _createPet(string memory _name, uint _dna) private {
+    uint id = pets.push(Pet(_name, _dna)) - 1;
+    emit NewPet(id, _name, _dna);
+}
+</code></pre></div>
+
+<ul>
+<li><code>_createPet</code>: A private function (only usable inside the contract)</li>
+<li>What it does:<ul>
+<li>Push a new <code>Pet</code> into the <code>pets</code> array</li>
+<li><code>id</code> = index of the new pet</li>
+<li>Emit an event to let the outside world know the pet was created</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="random-dna-generator">Random DNA Generator</h3>
+<div class="codehilite"><pre><span></span><code>function _generateRandomDna(string memory _str) private view returns (uint) {
+    uint rand = uint(keccak256(abi.encodePacked(_str)));
+    return rand % dnaModulus;
+}
+</code></pre></div>
+
+<ul>
+<li><code>_generateRandomDna</code>: Generates a pseudo-random number from a string input.</li>
+<li>Uses keccak256 (a hashing function in Ethereum).</li>
+<li><code>dnaModulus</code> ensures DNA is always 16 digits.</li>
+<li>Marked view because it doesn’t change the blockchain, just reads from it.</li>
+</ul>
+<hr />
+<h3 id="public-function-to-create-pets">Public Function to Create Pets</h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createRandomPet</span><span class="p">(</span><span class="nx">string</span><span class="w"> </span><span class="nx">memory</span><span class="w"> </span><span class="nx">_name</span><span class="p">)</span><span class="w"> </span><span class="kr">public</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">uint</span><span class="w"> </span><span class="nx">randDna</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">_generateRandomDna</span><span class="p">(</span><span class="nx">_name</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">_createPet</span><span class="p">(</span><span class="nx">_name</span><span class="p">,</span><span class="w"> </span><span class="nx">randDna</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>This is the main entry point for users</li>
+<li>Anyone can call <code>createRandomPet("Fluffy")</code>, and it will:<ol>
+<li>Generate a DNA from the name</li>
+<li>Create the new pet</li>
+<li>Save it to the blockchain and emit an event.</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h2 id="closing-thoughts-on-day-1">Closing Thoughts on Day 1</h2>
+<p>Day 1 is done, and honestly, I feel proud. Solidity has always felt like a mountain, but breaking it down into pieces made it much less intimidating. It’s the first time I didn’t just copy-paste code but actually understood why it works.  </p>
+<p>For anyone who wants to take the same path, here are a few resources I found useful:</p>
+<ul>
+<li><a href="https://cryptozombies.io/">CryptoZombies</a> – learn by building your own zombie game  </li>
+<li><a href="https://docs.soliditylang.org/">Solidity Docs</a> – best for clarifying syntax  </li>
+<li><a href="https://www.freecodecamp.org/news/learn-solidity-beginners-guide/">FreeCodeCamp Solidity Tutorial</a> – step-by-step video guide  </li>
+</ul>
+<p>Feeling excited for what’s ahead. One day down, many more to go! 🚀</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
